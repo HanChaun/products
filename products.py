@@ -1,12 +1,18 @@
+import os #operating system
+
 #Read File
 products = []
-with open('products.csv', 'r') as f:
-	for line in f:
-		if 'Products,Price' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+	print('yeah! find the file!')
+	with open('products.csv', 'r') as f:
+		for line in f:
+			if 'Products,Price' in line:
+				continue
+				name, price = line.strip().split(',')
+				products.append([name, price])
+				print(products)
+else:
+	print('Not found!')
 #User input
 products = []
 while True:
@@ -16,7 +22,7 @@ while True:
 	price = raw_input('pls input product price:')
 	products.append([name, price])
 print(products)
-#Buy record
+#Print Buy record
 for p in products:
 	print(p)
 	print(p[0], 'price is', p[1])
